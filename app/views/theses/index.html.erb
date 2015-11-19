@@ -17,13 +17,15 @@
   <tbody>
     <% @theses.each do |thesis| %>
       <tr>
-        <td><%= thesis.title %></td>
+        <td><%= link_to thesis.title, thesis %></td>
         <td><%= truncate(thesis.abstract, :length => 50) %></td>
         <td>
           <% if thesis.person %>
-            <%= thesis.person.firstname %>
-            <%= thesis.person.lastname %>
-            (<%= thesis.person.username %>)
+            <%= link_to(thesis.person) do %>
+              <%=thesis.person.firstname%>
+              <%=thesis.person.lastname%>
+              (<%=thesis.person.username%>)
+            <% end %>
           <% else %>
             N/A
           <% end %>
