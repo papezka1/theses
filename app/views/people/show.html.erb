@@ -15,5 +15,12 @@
   <%= @person.lastname %>
 </p>
 
+<p><strong>Theses:</strong></p>
+<ul>
+  <% @person.theses.each do |thesis| %>
+  <li><%= link_to thesis.title, thesis %></li>
+  <% end %>
+</ul>
+
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Back', people_path %>
