@@ -11,13 +11,25 @@
 </p>
 
 <p>
-  <strong>Defended:</strong>
-  <%= @thesis.defended %>
+  <strong>Author:</strong>
+  <% if @thesis.person %>
+    <%= @thesis.person.firstname %>
+    <%= @thesis.person.lastname %>
+    (<%= @thesis.person.username %>)
+  <% else %>
+    N/A
+  <% end %>
 </p>
 
 <p>
   <strong>Faculty:</strong>
   <%= @thesis.faculty.try!(:name) %>
 </p>
+
+<p>
+  <strong>Defended:</strong>
+  <%= @thesis.defended %>
+</p>
+
 <%= link_to 'Edit', edit_thesis_path(@thesis) %> |
 <%= link_to 'Back', theses_path %>

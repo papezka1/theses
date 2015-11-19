@@ -28,7 +28,7 @@
     <%= f.select :faculty_id, Faculty.all.collect {|f| [f.name, f.id]}, include_blank: true %>
   </div>
   <div class="field">
-    <%= f.label :person %><br>
+    <%= f.label "Author" %><br>
     <%= f.select :person_id, Person.all.collect {|p| [p.username, p.id]}, include_blank: true %>
   </div>
   <div class="actions">

@@ -7,6 +7,7 @@
     <tr>
       <th>Title</th>
       <th>Abstract</th>
+      <th>Author</th>
       <th>Faculty</th>
       <th>Defended</th>
       <th colspan="3"></th>
@@ -17,7 +18,16 @@
     <% @theses.each do |thesis| %>
       <tr>
         <td><%= thesis.title %></td>
-        <td><%= thesis.abstract %></td>
+        <td><%= truncate(thesis.abstract, :length => 50) %></td>
+        <td>
+          <% if thesis.person %>
+            <%= thesis.person.firstname %>
+            <%= thesis.person.lastname %>
+            (<%= thesis.person.username %>)
+          <% else %>
+            N/A
+          <% end %>
+        </td>
         <td><%= thesis.faculty.try!(:name) %></td>
         <td><%= thesis.defended %></td>
         <td><%= link_to 'Show', thesis %></td>
